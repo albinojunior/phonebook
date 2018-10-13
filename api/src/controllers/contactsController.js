@@ -10,7 +10,6 @@ const ContactsController = function () {
             const user = userService.getUserByToken(req.headers['authorization']);
             res.send(await service.all(options, user));
         } catch (err) {
-            console.log(err);
             res.status(400)
                 .send({
                     message: "Erro ao consultar lista de contatos!",
@@ -35,7 +34,7 @@ const ContactsController = function () {
             if (err.name === 'MongoError' && err.code === 11000) {
                 err.message = 'Contato já cadastrado!';
             }
-            
+
             res.status(400)
                 .send({
                     message: err.message,
@@ -63,7 +62,7 @@ const ContactsController = function () {
     const remove = async function (req, res) {
         try {
             await service.remove(req.params.id);
-            res.status(204)
+            res.status(200)
                 .send({
                     message: 'Contato excluído com sucesso!',
                     error: false

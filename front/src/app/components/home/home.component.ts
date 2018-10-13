@@ -11,7 +11,11 @@ import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private auth: AuthService, private router: Router, public dialog: MatDialog) { }
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     if (this.auth.isLoggedIn()) {

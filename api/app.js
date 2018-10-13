@@ -31,6 +31,6 @@ app.use(function (req, res, next) {
 require('./database');    //MongoDB Connection
 require('./routes')(app); //Routes
 
-server.listen(3000, () => {
+server.listen(8080,() => {
     console.log('API Phonebook has been started');
 });

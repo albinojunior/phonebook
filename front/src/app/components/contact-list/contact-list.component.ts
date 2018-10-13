@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material';
 import { EditContactDialogComponent } from '../edit-contact-dialog/edit-contact-dialog.component';
 import { ContactService } from 'src/app/services/contact/contact.service';
 import { NotifyService } from 'src/app/services/notify/notify.service';
+import { DeleteContactDialogComponent } from '../delete-contact-dialog/delete-contact-dialog.component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-contact-list',
@@ -12,25 +14,26 @@ import { NotifyService } from 'src/app/services/notify/notify.service';
 export class ContactListComponent implements OnInit {
 
   contacts: object[] = [];
-  meta: object[];
-  page: any = 1;
-  displayedColumns: string[] = ['name', 'email', 'phone', 'company', 'position', 'actions'];
+  loading: boolean;
   paginator: any = {
     total: 0,
     per_page: 1
   };
-  loading: boolean;
-  search: any = '';
-  order: string;
-  sort: string;
+  options: any = {
+    limit: 12,
+    page: 1,
+    search: '',
+  };
 
   constructor(
     private dialog: MatDialog,
     private contactService: ContactService,
-    private notify: NotifyService
+    private notify: NotifyService,
+    private titleService: Title
   ) { }
 
   ngOnInit() {
+    this.titleService.setTitle('Meus Contatos');
     this.listAll();
   }
 
@@ -40,21 +43,35 @@ export class ContactListComponent implements OnInit {
       data: contact ? { contact } : null
     });
 
-    dialogRef.componentInstance.onSave.subscribe(() => {
-      this.listAll();
-    });
+    dialogRef.componentInstance.onSave
+      .subscribe(() => {
+        this.listAll();
+      });
   }
 
-  listAll(options = { page: 1, limit: 15 }) {
+  openDeleteDialog(contact) {
+    const dialogRef = this.dialog.open(DeleteContactDialogComponent, {
+      width: '250px',
+      height: 'auto',
+      data: { contact }
+    });
+
+    dialogRef.componentInstance.onDelete
+      .subscribe(() => {
+        this.listAll();
+      });
+  }
+
+  listAll() {
     this.contacts = [];
     this.loading = true;
     setTimeout(() => {
-      this.contactService.getAll({ ...options, search: this.search })
+      this.contactService.getAll(this.options)
         .subscribe(res => {
           this.contacts = res.data;
           this.paginator = {
-            total: res.pageCount,
-            per_page: options.limit
+            total: res.totalCount,
+            per_page: this.options.limit
           };
           this.loading = false;
         }, res => {
@@ -66,6 +83,7 @@ export class ContactListComponent implements OnInit {
   }
 
   prepareListAll(options) {
-    this.listAll({ page: options.pageIndex + 1, limit: options.pageSize });
+    this.options = {...this.options, page: options.pageIndex + 1, limit: options.pageSize};
+    this.listAll();
   }
 }

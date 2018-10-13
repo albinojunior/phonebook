@@ -46,7 +46,7 @@ const ContactService = function () {
 
     const remove = async function (id) {
         const deleted = await Contact.remove({_id: id});
-        if(deleted.result) throw new Error('Erro ao tentar excluir contato!');
+        if(deleted.ok == 0) throw new Error('Erro ao tentar excluir contato!');
         return deleted;
     }
 

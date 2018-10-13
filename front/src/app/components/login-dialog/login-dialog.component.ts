@@ -14,7 +14,7 @@ export class LoginDialogComponent {
   access_code: string;
 
   constructor(
-    public dialogRef: MatDialogRef<LoginDialogComponent>,
+    private dialogRef: MatDialogRef<LoginDialogComponent>,
     private auth: AuthService,
     private notify: NotifyService,
     private router: Router

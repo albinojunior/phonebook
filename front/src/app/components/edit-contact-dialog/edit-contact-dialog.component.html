@@ -10,7 +10,7 @@
           <mat-icon *ngIf="!isEdit">person_add</mat-icon>
           <strong>
             {{isEdit ? 'Editar ' : 'Novo Contato'}}
-          </strong> {{isEdit ? contact.name : ''}}
+          </strong> {{isEdit ? '| ' + contact.name : ''}}
         </h1>
         <button mat-button color="warn" style="font-size: 12px" [mat-dialog-close]="true">
           <mat-icon>close</mat-icon>

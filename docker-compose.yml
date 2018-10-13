@@ -10,7 +10,7 @@ services:
     build: api
     command: npm start
     ports:
-      - "3000:3000"
+      - "8080:8080"
   front:
     build: front
     command: npm start

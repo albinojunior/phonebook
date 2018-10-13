@@ -39,6 +39,8 @@ import { EditContactDialogComponent } from './components/edit-contact-dialog/edi
 import { ContactComponent } from './components/contact/contact.component';
 import { MatPaginatorIntlPtBr } from './configs/paginator.config';
 import { HandlerErrorHelper } from './services/handler-error.helper';
+import { FormBuilderValidators } from './validators/form-builder.validator';
+import { DeleteContactDialogComponent } from './components/delete-contact-dialog/delete-contact-dialog.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { HandlerErrorHelper } from './services/handler-error.helper';
     NavbarComponent,
     LoginDialogComponent,
     EditContactDialogComponent,
-    ContactComponent
+    ContactComponent,
+    DeleteContactDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ import { HandlerErrorHelper } from './services/handler-error.helper';
   ],
   providers: [
     HandlerErrorHelper,
+    FormBuilderValidators,
     { provide: MatDialogRef, useValue: {} },
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: true } },
     { provide: MatPaginatorIntl, useClass: MatPaginatorIntlPtBr },
@@ -83,7 +87,8 @@ import { HandlerErrorHelper } from './services/handler-error.helper';
   bootstrap: [AppComponent],
   entryComponents: [
     LoginDialogComponent,
-    EditContactDialogComponent
+    EditContactDialogComponent,
+    DeleteContactDialogComponent
   ]
 })
 export class AppModule { }

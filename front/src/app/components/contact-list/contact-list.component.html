@@ -8,11 +8,12 @@
         <mat-icon>refresh</mat-icon>
       </button>
     </div>
+   <form (submit)="listAll()">
     <div class="col-md-10 col-xs-12 text-center">
       <mat-form-field>
-        <input matInput placeholder="Pesquisar" name="search" [(ngModel)]="search">
+        <input matInput placeholder="Pesquisar" name="search" [(ngModel)]="options.search">
       </mat-form-field>
-      <button mat-button color="primary" title="Buscar" (click)="listAll()">
+      <button mat-button color="primary" type="submit" [disabled]="!options.search" title="Buscar" >
         <mat-icon>search</mat-icon>
       </button>
     </div>
@@ -21,13 +22,14 @@
         <mat-icon>person_add</mat-icon>
       </button>
     </div>
+  </form>
   </div>
   <div class="row">
-    <app-contact *ngFor="let contact of contacts" [contact]="contact" (edit)="openDialog(contact)"></app-contact>
+    <app-contact *ngFor="let contact of contacts" [contact]="contact" (edit)="openDialog(contact)" (delete)="openDeleteDialog(contact)"></app-contact>
   </div>
   <div class="row">
     <div class="col-md-12">
-      <mat-paginator class="col-md-12" [length]="paginator.total" [pageSize]="paginator.per_page" [pageSizeOptions]="[10, 25, 50, 100]"
+      <mat-paginator class="col-md-12" [length]="paginator.total" [pageSize]="paginator.per_page" [pageSizeOptions]="[9, 12, 24, 48, 96]"
         (page)="prepareListAll($event)">
       </mat-paginator>
     </div>
