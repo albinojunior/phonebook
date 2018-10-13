@@ -1,0 +1,19 @@
+version: '3'
+services:
+  mongo:
+    image: mongo
+    restart: always
+    command: --smallfiles
+    ports:
+      - "27017:27017"
+  api:
+    build: api
+    command: npm start
+    ports:
+      - "3000:3000"
+  front:
+    build: front
+    command: npm start
+    ports:
+      - "4200:4200"
+ 

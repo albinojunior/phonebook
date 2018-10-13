@@ -1,0 +1,121 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import "~angular-notifier/styles.css";
+
+:root {
+  --invoice-color: #fff6a8;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background-color: #dddddd;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 300;
+}
+
+.container{
+  padding: 15px 30px;
+}
+
+.title {
+    font-size: 30px;
+    color: #3f51b5;
+}
+
+.welcome {
+    background-color: #fff;
+    font-size: 15px;
+    color: #3f51b5;
+}
+
+.table-responsive{
+  overflow: auto!important;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 100%;
+  }
+}
+
+.background{
+  background: url("assets/img/bg.jpg") center;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+
+.loading {
+  display: flex;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  position: absolute;
+  min-width: 100%;
+  left: 0;
+  background: rgba(0,0,0,0.1);
+  top: 0;
+  z-index: 99999;
+}
+
+.loader:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.mat-dialog-container {
+    padding: 0!important;
+}
+
+.mat-grid-tile-footer {
+    background: #dddddd!important;
+}
+
+.mat-grid-tile-header {
+    background: #dddddd!important;
+}
+
+.dialog-footer {
+    width: 100%;
+}
+
+.mat-stroked-button {
+  min-width: 30px!important;
+  min-height: 20px!important;
+}
+
+.mat-button {
+  min-width: 30px!important;
+  min-height: 20px!important;
+}
+
+.material-icons {
+  font-size: 20px!important;
+}

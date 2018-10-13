@@ -1,0 +1,29 @@
+<div class="col-md-4 col-xs-12" style="padding-bottom: 15px">
+  <mat-card class="col-md-12 col-xs-12">
+    <mat-card-header>
+      <img mat-card-avatar [src]="false ? '' : 'https://cdn3.iconfinder.com/data/icons/black-easy/512/538642-user_512x512.png'" />
+      <mat-card-title>{{contact.name}}</mat-card-title>
+      <mat-card-subtitle>{{contact.position}} | {{contact.company}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        <strong>Telefone: </strong>{{contact.phone}}
+      </p>
+      <p>
+        <strong>Email: </strong>{{contact.email}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <span class="col-md-6 col-xs-6">
+        <button mat-stroked-button color="primary" (click)="handleEdit()">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </span>
+      <span class="col-md-6 col-xs-6 text-right">
+        <button mat-stroked-button color="warn" (click)="handleDelete()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </span>
+    </mat-card-actions>
+  </mat-card>
+</div>

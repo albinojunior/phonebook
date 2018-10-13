@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="loading" *ngIf="loading">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+  <div class="col-md-12" style="background-color: #ffffff;padding: 15px 12px 0 0px;margin-bottom: 20px;">
+    <div class="col-md-1">
+      <button mat-raised-button color="primary" title="Atualizar" (click)="listAll()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+    </div>
+    <div class="col-md-10 col-xs-12 text-center">
+      <mat-form-field>
+        <input matInput placeholder="Pesquisar" name="search" [(ngModel)]="search">
+      </mat-form-field>
+      <button mat-button color="primary" title="Buscar" (click)="listAll()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <div class="col-md-1">
+      <button mat-raised-button color="warn" title="Novo Contato" (click)="openDialog()">
+        <mat-icon>person_add</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <app-contact *ngFor="let contact of contacts" [contact]="contact" (edit)="openDialog(contact)"></app-contact>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <mat-paginator class="col-md-12" [length]="paginator.total" [pageSize]="paginator.per_page" [pageSizeOptions]="[10, 25, 50, 100]"
+        (page)="prepareListAll($event)">
+      </mat-paginator>
+    </div>
+  </div>
+</div>

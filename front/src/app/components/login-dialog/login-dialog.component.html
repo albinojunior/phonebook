@@ -1,0 +1,23 @@
+<form (submit)="login()">
+  <div class="loading" *ngIf="sending">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+  <mat-grid-list cols="1">
+    <mat-grid-tile>
+      <mat-grid-tile-header>
+        <h1 mat-dialog-title style="color: #3f51b5; width: 100%"><strong>Acessar Agenda</strong></h1>
+        <button mat-button style="font-size: 12px" [mat-dialog-close]="true"><mat-icon>close</mat-icon></button>
+      </mat-grid-tile-header>
+      <mat-dialog-content>
+        <mat-form-field>
+          <input matInput placeholder="Código de acesso" name="access_code" [(ngModel)]="access_code" required>
+        </mat-form-field>
+      </mat-dialog-content>
+      <mat-grid-tile-footer>
+        <div mat-dialog-actions class="dialog-footer">
+          <button mat-raised-button type="submit" [title]="access_code ? 'Clique para Entrar' : 'Informe o código de acesso'" [disabled]="sending || !access_code" class="btn-block" color="primary">Entrar</button>
+        </div>
+      </mat-grid-tile-footer>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>
