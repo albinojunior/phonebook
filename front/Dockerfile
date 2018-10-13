@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -yq google-chrome-stable
 
 WORKDIR /usr/app
 
-COPY package.json ./
+COPY package*.json ./
 RUN npm install
 COPY . .
 EXPOSE 4200
