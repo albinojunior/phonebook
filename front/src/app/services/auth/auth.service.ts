@@ -63,7 +63,7 @@ export class AuthService {
 
         if (_.isEmpty(jsonData) && !_.isObject(jsonData)) {
             eraseCookie('auth_token');
-            this.router.navigate(['/home']);
+            this.router.navigate(['/']);
 
         } else {
             return jsonData.token.access_token;
@@ -76,7 +76,7 @@ export class AuthService {
 
         if (_.isEmpty(jsonData) && !_.isObject(jsonData)) {
             eraseCookie('auth_user_data');
-            this.router.navigate(['/home']);
+            this.router.navigate(['/']);
         }
         return jsonData;
     }
@@ -105,7 +105,7 @@ export class AuthService {
     logout(): void {
         eraseCookie('auth_token');
         eraseCookie('auth_user_data');
-        this.router.navigate(['/home']);
+        this.router.navigate(['/']);
     }
 
 }
